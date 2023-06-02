@@ -221,22 +221,22 @@ def compute_ancestors_folder(foldermap, fid):
 
 def compute_info(foldermap, fid):
     path = foldermap[fid]['path']
-    bu = 'undefined_bu'
-    client = 'undefined_client'
-    project = 'undefined_project'
-    platform = 'undefined_platform'
+    folder1 = 'undefined_folder1'
+    folder2 = 'undefined_folder2'
+    folder3 = 'undefined_folder3'
+    folder4 = 'undefined_folder4'
     if len(path) >= 1:
-        bu = path[0]
+        folder1 = path[0]
         if len(path) >= 2:
-            client = path[1]
+            folder2 = path[1]
             if len(path) >= 3:
-                project = path[2]
+                folder3 = path[2]
                 if len(path) >= 4:
-                    platform = path[3] 
-    foldermap[fid]['bu'] = bu
-    foldermap[fid]['client'] = client
-    foldermap[fid]['project'] = project
-    foldermap[fid]['platform'] = platform
+                    folder4 = path[3] 
+    foldermap[fid]['folder1'] = folder1
+    foldermap[fid]['folder2'] = folder2
+    foldermap[fid]['folder3'] = folder3
+    foldermap[fid]['folder4'] = folder4
 
 def batch_fetch_properties_folder_tree(content, obj_type, properties):
     folders = batch_fetch_properties_folder(content, obj_type, properties)

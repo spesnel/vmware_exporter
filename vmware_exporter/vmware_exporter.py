@@ -94,7 +94,7 @@ class VmwareCollector():
 
         # label names and ammount will be needed later to insert labels from custom attributes
         self._labelNames = {
-            'vms': ['vm_name', 'ds_name', 'host_name', 'dc_name', 'cluster_name', 'path', 'bu', 'client', 'project', 'platform'],
+            'vms': ['vm_name', 'ds_name', 'host_name', 'dc_name', 'cluster_name', 'path', 'folder1', 'folder2', 'folder3', 'folder4'],
             'vm_perf': ['vm_name', 'ds_name', 'host_name', 'dc_name', 'cluster_name'],
             'vmguests': ['vm_name', 'ds_name', 'host_name', 'dc_name', 'cluster_name'],
             'snapshots': ['vm_name', 'ds_name', 'host_name', 'dc_name', 'cluster_name'],
@@ -819,7 +819,7 @@ class VmwareCollector():
 #            logging.info("FOLDERS : {} {}".format(fid, list(f.keys())))
 #            logging.info("FOLDERS : {} {} {} {}".format(f['obj'], f['id'], f['name'], f['parent']))
 #            if 'path' in f:
-#                logging.info("FOLDERS : {} -> {} - bu={} client={} project={} platform={}".format(fid, f['path'],f['bu'],f['client'],f['project'],f['platform']))
+#                logging.info("FOLDERS : {} -> {} - folder1={} folder2={} folder3={} folder4={}".format(fid, f['path'],f['folder1'],f['folder2'],f['folder3'],f['folder4']))
 
 
         fetch_time = datetime.datetime.utcnow() - start
@@ -1138,12 +1138,12 @@ class VmwareCollector():
             else:
                 labels[moid] = labels[moid] + ['n/a','n/a','n/a']
             
-            # path, client, project, platform
+            # path, folder1, folder2, folder3, folder4
             p = ['n/a','n/a','n/a','n/a','n/a']
             if 'parent' in row:
                 pid = row['parent']
                 if pid in folders:
-                    p = ["/".join(folders[pid]['path']), folders[pid]['bu'], folders[pid]['client'], folders[pid]['project'], folders[pid]['platform']]
+                    p = ["/".join(folders[pid]['path']), folders[pid]['folder1'], folders[pid]['folder2'], folders[pid]['folder3'], folders[pid]['folder4']]
             labels[moid] = labels[moid] + p
 
             """
